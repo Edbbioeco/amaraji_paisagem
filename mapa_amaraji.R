@@ -196,8 +196,12 @@ mapa_pe <- ggplot() +
   geom_sf(data = amaraji,  color = "darkred", fill = "transparent",
           linewidth = 0.75) +
   coord_sf(xlim = c(-36, -34.8),
-           ylim = c(-9, -8)) +
+           ylim = c(-9, -8),
+           expand = FALSE) +
   theme_void() +
+  theme(axis.text = element_blank(),
+        legend.position = "none",
+        panel.background = element_rect(color = "black", linewidth = 2)) +
   ggview::canvas(height = 10, width = 12)
 
 mapa_pe
