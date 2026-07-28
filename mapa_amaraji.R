@@ -177,3 +177,18 @@ mapa_br <- ggplot() +
   ggview::canvas(height = 10, width = 12)
 
 mapa_br
+
+## Mapa pe ----
+
+mapa_pe <- ggplot() +
+  geom_sf(data = br,  color = "black") +
+  geom_sf(data = pe,  color = "black", fill = "goldenrod") +
+  geom_sf(data = amaraji,  color = "darkred", fill = "transparent",
+          linewidth = 1) +
+  coord_sf(xlim = c(-36, -34.8),
+           ylim = c(-9, -8)) +
+  theme_void() +
+  ggview::canvas(height = 10, width = 12)
+
+mapa_pe
+
