@@ -143,10 +143,10 @@ mapa_principal <- ggplot() +
   tidyterra::geom_spatraster_rgb(data = amaraji_tif) +
   geom_sf(data = amaraji, fill = "transparent",
           aes(color = "Amaraji"),
-          linewidth = 1) +
+          linewidth = 2) +
   scale_color_manual(values = c("Brasil" = "black",
                                 "Pernambuco" = "black",
-                                "Amaraji" = "red"),
+                                "Amaraji" = "darkred"),
                      breaks = c("Brasil", "Pernambuco", "Amaraji")) +
   coord_sf(expand = FALSE,
            label_graticule = "NSWE",
