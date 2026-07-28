@@ -10,9 +10,9 @@ library(terra)
 
 library(tidyterra)
 
-library(cowplot)
-
 library(ggview)
+
+library(cowplot)
 
 # Dados ----
 
