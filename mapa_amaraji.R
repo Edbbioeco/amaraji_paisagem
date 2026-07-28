@@ -223,3 +223,6 @@ cowplot::ggdraw(mapa_principal) +
                      x = 0.635,
                      y = 0.75) +
   ggview::canvas(height = 10, width = 12)
+
+ggsave(filename = "mapa_amaraji.png",
+       height = 10, width = 12)
