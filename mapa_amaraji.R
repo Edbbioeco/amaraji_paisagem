@@ -201,7 +201,10 @@ mapa_pe <- ggplot() +
   theme_void() +
   theme(axis.text = element_blank(),
         legend.position = "none",
-        panel.background = element_rect(color = "black", linewidth = 2)) +
+        panel.background = element_rect(color = "black",
+                                        fill = "transparent",
+                                        linewidth = 2),
+        panel.ontop = TRUE) +
   ggview::canvas(height = 10, width = 12)
 
 mapa_pe
