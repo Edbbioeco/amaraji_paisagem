@@ -170,6 +170,7 @@ mapa_principal
 
 mapa_br <- ggplot() +
   geom_sf(data = br,
+          fill = "gray",
           color = "black") +
   geom_sf(data = pe,
           fill = "goldenrod",
