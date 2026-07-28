@@ -76,3 +76,12 @@ catalogo <- CDSE::SearchCatalog(aoi = amaraji,
                                 filter = "eo:cloud_cover < 1")
 
 catalogo
+
+## Evalscript ----
+
+evalscript <- system.file("scripts",
+                          "TrueColor.js",
+                          package = "CDSE")
+
+evalscript
+
