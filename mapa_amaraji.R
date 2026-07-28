@@ -215,8 +215,8 @@ cowplot::ggdraw(mapa_principal) +
                      x = 0.125,
                      y = 0.1) +
   cowplot::draw_plot(mapa_pe,
-                     height = 0.275,
-                     width = 0.275,
-                     x = 0.625,
-                     y = 0.6) +
+                     height = 0.2,
+                     width = 0.2,
+                     x = 0.635,
+                     y = 0.75) +
   ggview::canvas(height = 10, width = 12)
