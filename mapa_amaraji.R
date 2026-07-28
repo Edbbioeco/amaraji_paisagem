@@ -164,3 +164,15 @@ mapa_principal <- ggplot() +
   ggview::canvas(height = 10, width = 12)
 
 mapa_principal
+
+## Mapa br ----
+
+mapa_br <- ggplot() +
+  geom_sf(data = br,
+          color = "black") +
+  geom_sf(data = pe,
+          fill = "goldenrod",
+          color = "black") +
+  theme_void()
+
+mapa_br
