@@ -95,3 +95,19 @@ periodo <- catalogo |>
   dplyr::pull(acquisitionDate)
 
 periodo
+
+### Baixar raster ----
+
+dir.create("./rasters_rgb")
+
+CDSE::GetImage(bbox = amaraji |> sf::st_bbox(),
+               time_range = periodo,
+               script = evalscript,
+               file = "./rasters_rgb/raster_rgb_modelo.tif",
+               collection = "sentinel-3-synergy-l2",
+               format = "image/tiff",
+               mosaicking_order = "leastRecent",
+               resolution = 10,
+               mask = TRUE,
+               buffer = 100,
+               client = cliente)
