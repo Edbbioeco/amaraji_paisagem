@@ -70,12 +70,12 @@ cliente <- CDSE::GetOAuthClient(id = Sys.getenv("CDSE_ID"),
 ### Carregar catálogo ----
 
 catalogo <- CDSE::SearchCatalog(aoi = amaraji,
-                                from = "2020-01-01",
+                                from = "2000-01-01",
                                 to = "2026-07-01",
-                                collection = "sentinel-3-synergy-l2",
+                                collection = "sentinel-2-l2a",
                                 with_geometry = FALSE,
                                 client = cliente,
-                                filter = "eo:cloud_cover < 1")
+                                filter = "eo:cloud_cover < 5")
 
 catalogo
 
@@ -90,7 +90,7 @@ evalscript
 ### Selecionar periodo ----
 
 periodo <- catalogo |>
-  dplyr::filter(tileCloudCover == 0) |>
+  dplyr::filter(tileCloudCover < 5) |>
   dplyr::arrange(acquisitionDate |> dplyr::desc(),
                  tileCloudCover) |>
   dplyr::slice(1) |>
@@ -106,7 +106,7 @@ CDSE::GetImage(bbox = amaraji |> sf::st_bbox(),
                time_range = periodo,
                script = evalscript,
                file = "./rasters_rgb/raster_rgb_modelo.tif",
-               collection = "sentinel-3-synergy-l2",
+               collection = "sentinel-2-l2a",
                format = "image/tiff",
                mosaicking_order = "leastRecent",
                resolution = 10,
