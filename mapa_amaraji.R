@@ -113,3 +113,16 @@ CDSE::GetImage(bbox = amaraji |> sf::st_bbox(),
                mask = TRUE,
                buffer = 100,
                client = cliente)
+
+### Importar raster ----
+
+amaraji_tif <- terra::rast("./rasters_rgb/raster_rgb_modelo.tif")
+
+### Visualizar ----
+
+amaraji_tif
+
+ggplot() +
+  tidyterra::geom_spatraster_rgb(data = amaraji_tif) +
+  geom_sf(data = amaraji, color = "red", fill = "transparent") +
+  coord_sf(expand = FALSE)
