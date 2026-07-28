@@ -77,7 +77,7 @@ catalogo <- CDSE::SearchCatalog(aoi = amaraji,
 
 catalogo
 
-## Evalscript ----
+### Evalscript ----
 
 evalscript <- system.file("scripts",
                           "TrueColor.js",
@@ -85,3 +85,13 @@ evalscript <- system.file("scripts",
 
 evalscript
 
+### Selecionar periodo ----
+
+periodo <- catalogo |>
+  dplyr::filter(tileCloudCover == 0) |>
+  dplyr::arrange(acquisitionDate |> dplyr::desc(),
+                 tileCloudCover) |>
+  dplyr::slice(1) |>
+  dplyr::pull(acquisitionDate)
+
+periodo
