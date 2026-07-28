@@ -192,3 +192,12 @@ mapa_pe <- ggplot() +
 
 mapa_pe
 
+## Mapa final ----
+
+cowplot::ggdraw(mapa_principal) +
+  cowplot::draw_plot(mapa_br,
+                     height = 0.2,
+                     width = 0.2,
+                     x = 0.1,
+                     y = 0.1) +
+  ggview::canvas(height = 10, width = 12)
