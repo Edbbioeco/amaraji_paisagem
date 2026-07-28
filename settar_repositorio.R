@@ -1,0 +1,23 @@
+# Pacotes ----
+
+library(usethis)
+
+library(gert)
+
+# Iniciar git ----
+
+usethis::use_git()
+
+# Commits ----
+
+gert::git_add(files = ".gitignore")
+
+gert::git_commit(message = "gitignore")
+
+# Criar repositório ----
+
+usethis::use_github()
+
+# Criar README ----
+
+usethis::use_readme_md()
