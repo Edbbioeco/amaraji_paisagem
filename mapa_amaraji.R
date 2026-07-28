@@ -171,10 +171,12 @@ mapa_principal
 mapa_br <- ggplot() +
   geom_sf(data = br,
           fill = "gray",
-          color = "black") +
+          color = "black",
+          linewidth = 0.75) +
   geom_sf(data = pe,
           fill = "goldenrod",
-          color = "black") +
+          color = "black",
+          linewidth = 0.75) +
   theme_void() +
   ggview::canvas(height = 10, width = 12)
 
@@ -185,12 +187,14 @@ mapa_br
 mapa_pe <- ggplot() +
   geom_sf(data = br,
           fill = "gray",
-          color = "black") +
+          color = "black",
+          linewidth = 0.75) +
   geom_sf(data = pe,
           color = "black",
-          fill = "goldenrod") +
+          fill = "goldenrod",
+          linewidth = 0.75) +
   geom_sf(data = amaraji,  color = "darkred", fill = "transparent",
-          linewidth = 1) +
+          linewidth = 0.75) +
   coord_sf(xlim = c(-36, -34.8),
            ylim = c(-9, -8)) +
   theme_void() +
