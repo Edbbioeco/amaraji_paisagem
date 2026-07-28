@@ -6,6 +6,8 @@ library(tidyverse)
 
 library(CDSE)
 
+library(terra)
+
 library(tidyterra)
 
 library(cowplot)
