@@ -173,6 +173,7 @@ mapa_br <- ggplot() +
   geom_sf(data = pe,
           fill = "goldenrod",
           color = "black") +
-  theme_void()
+  theme_void() +
+  ggview::canvas(height = 10, width = 12)
 
 mapa_br
