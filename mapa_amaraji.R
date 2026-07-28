@@ -58,9 +58,21 @@ ggplot() +
   coord_sf(xlim = c(-36, -34.8),
            ylim = c(-9, -8))
 
-# Raster de imagem RGB de satélite de Amaraji ----
+## Raster de imagem RGB de satélite de Amaraji ----
 
-## Iniciar sessão do cliente ----
+### Iniciar sessão do cliente ----
 
 cliente <- CDSE::GetOAuthClient(id = Sys.getenv("CDSE_ID"),
                                 secret = Sys.getenv("CDSE_SECRET"))
+
+### Carregar catálogo ----
+
+catalogo <- CDSE::SearchCatalog(aoi = amaraji,
+                                from = "2020-01-01",
+                                to = "2026-07-01",
+                                collection = "sentinel-3-synergy-l2",
+                                with_geometry = FALSE,
+                                client = cliente,
+                                filter = "eo:cloud_cover < 1")
+
+catalogo
