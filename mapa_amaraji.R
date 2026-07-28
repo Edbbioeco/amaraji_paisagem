@@ -10,6 +10,8 @@ library(terra)
 
 library(tidyterra)
 
+library(ggspatial)
+
 library(ggview)
 
 library(cowplot)
