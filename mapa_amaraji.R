@@ -126,3 +126,39 @@ ggplot() +
   tidyterra::geom_spatraster_rgb(data = amaraji_tif) +
   geom_sf(data = amaraji, color = "red", fill = "transparent") +
   coord_sf(expand = FALSE)
+
+# Mapas ----
+
+## Mapa principal ----
+
+mapa_principal <- ggplot() +
+  geom_sf(data = br,
+          aes(color = "Brasil"),
+          linewidth = 1) +
+  geom_sf(data = pe,  fill = "goldenrod",
+          aes(color = "Pernambuco"),
+          linewidth = 1) +
+  tidyterra::geom_spatraster_rgb(data = amaraji_tif) +
+  geom_sf(data = amaraji, fill = "transparent",
+          aes(color = "Amaraji"),
+          linewidth = 1) +
+  scale_color_manual(values = c("Brasil" = "black",
+                                "Pernambuco" = "black",
+                                "Amaraji" = "red"),
+                     breaks = c("Brasil", "Pernambuco", "Amaraji")) +
+  coord_sf(expand = FALSE,
+           label_graticule = "NSWE",
+           xlim = c(-35.56442, -35.37131),
+           ylim = c(-8.458444, -8.25894)) +
+  labs(color = NULL) +
+  ggspatial::annotation_scale(text_cex = 2,
+                              text_col = "white",
+                              location = "br") +
+  theme_bw() +
+  theme(axis.text = element_text(color = "black", size = 20),
+        legend.text = element_text(color = "black", size = 20),
+        legend.title = element_text(color = "black", size = 20),
+        legend.position = "bottom") +
+  ggview::canvas(height = 10, width = 12)
+
+mapa_principal
