@@ -200,13 +200,14 @@ gif_amaraji_uso |> magick::image_write("./mapas_uso_cobertura_solo/gif_amaraji_u
 
 ## Calcular a diversidade ----
 
-div_paisagem <- purrr::map_dbl(
+div_paisagem <- purrr::imap_dfr(
   uso_solo_trat,
   purrr::in_parallel(
 
-    ~.x |>
-      landscapemetrics::lsm_l_sidi() %>%
-      .$value
+    ~tibble::tibble(Ano = .y,
+                    `Diversidade (D de Gini-Simpson)` = .x |>
+                      landscapemetrics::lsm_l_sidi() %>%
+                      .$value)
 
     ),
   .progress = TRUE)
