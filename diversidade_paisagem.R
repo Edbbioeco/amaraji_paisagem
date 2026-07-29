@@ -230,3 +230,6 @@ div_paisagem |>
         panel.background = element_rect(linewidth = 1,
                                         color = "black")) +
   ggview::canvas(height = 10, width = 12)
+
+ggsave(filename = "./diversidade_paisagem.png",
+       height = 10, width = 12)
