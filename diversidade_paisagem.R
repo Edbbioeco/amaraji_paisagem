@@ -175,3 +175,12 @@ purrr::imap(uso_solo_trat,
     ),
     .progres = TRUE)
 
+# Gif dos mapas ----
+
+## Importar os mapas ----
+
+caminho_mapas <- list.files(path = "./mapas_uso_cobertura_solo",
+                            pattern = ".png$",
+                            full.names = TRUE)
+
+caminho_mapas
