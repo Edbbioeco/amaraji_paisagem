@@ -195,3 +195,20 @@ gif_amaraji_uso
 ## Exportar gif ----
 
 gif_amaraji_uso |> magick::image_write("./mapas_uso_cobertura_solo/gif_amaraji_uso_cobertura_solo.gif")
+
+# Diversidade da paisagem ----
+
+## Calcular a diversidade ----
+
+div_paisagem <- purrr::map_dbl(
+  uso_solo_trat,
+  purrr::in_parallel(
+
+    ~.x |>
+      landscapemetrics::lsm_l_sidi() %>%
+      .$value
+
+    ),
+  .progress = TRUE)
+
+div_paisagem
