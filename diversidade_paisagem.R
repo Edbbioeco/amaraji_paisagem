@@ -118,7 +118,8 @@ purrr::imap(uso_solo_trat,
                       panel.background = element_rect(linewidth = 1,
                                                       color = "black"),
                       plot.title = element_text(size = 20, color = "black"),
-                      plot.subtitle = element_text(size = 17.5, color = "black"))
+                      plot.subtitle = element_text(size = 17.5, color = "black")) +
+                ggview::canvas(height = 10, width = 12)
 
             ),
             .progress = TRUE)
