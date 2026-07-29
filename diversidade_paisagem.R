@@ -62,3 +62,9 @@ uso_solo <- purrr::map(
   setNames(1985:2025 |> as.character())
 
 uso_solo
+
+## Remover os NULL ----
+
+uso_solo_trat <- uso_solo |> purrr::compact()
+
+uso_solo_trat
