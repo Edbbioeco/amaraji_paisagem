@@ -204,7 +204,7 @@ div_paisagem <- purrr::imap_dfr(
   uso_solo_trat,
   purrr::in_parallel(
 
-    ~tibble::tibble(Ano = .y,
+    ~tibble::tibble(Ano = .y |> as.numeric(),
                     `Diversidade (D de Gini-Simpson)` = .x |>
                       landscapemetrics::lsm_l_sidi() %>%
                       .$value)
