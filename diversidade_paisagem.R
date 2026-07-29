@@ -44,8 +44,8 @@ uso_solo <- purrr::map(
           periodo,
           ".tif"
         )) |>
-          terra::crop(sitio) |>
-          terra::mask(sitio)
+          terra::crop(amaraji) |>
+          terra::mask(amaraji)
 
       }, error = \(e) {
 
