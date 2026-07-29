@@ -12,9 +12,9 @@ library(ggview)
 
 library(magick)
 
-library(gganimate)
-
 library(landscapemetrics)
+
+library(gganimate)
 
 # Shapefile de Amaraji----
 
