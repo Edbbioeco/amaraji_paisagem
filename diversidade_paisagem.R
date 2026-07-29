@@ -68,3 +68,17 @@ uso_solo
 uso_solo_trat <- uso_solo |> purrr::compact()
 
 uso_solo_trat
+
+## Visualizar ----
+
+purrr::imap(uso_solo_trat,
+            purrr::in_parallel(
+
+              ~ggplot() +
+                tidyterra::geom_spatraster(data = .x) +
+                scale_fill_viridis_c(option = "turbo",
+                                     na.value = "transparent") +
+                labs(title = .y)
+
+              ),
+            .progress = TRUE)
