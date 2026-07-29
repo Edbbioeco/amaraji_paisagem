@@ -179,9 +179,9 @@ purrr::imap(uso_solo_trat,
 
 ## Importar os mapas ----
 
-caminho_mapas <- list.files(path = "./mapas_uso_cobertura_solo",
+imagem_mapas <- list.files(path = "./mapas_uso_cobertura_solo",
                             pattern = ".png$",
                             full.names = TRUE) |>
   magick::image_read()
 
-caminho_mapas
+imagem_mapas
