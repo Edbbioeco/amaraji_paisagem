@@ -215,3 +215,18 @@ div_paisagem <- purrr::imap_dfr(
                               .fns = ~. |> as.numeric()))
 
 div_paisagem
+
+## Visualizar a série temporal ----
+
+div_paisagem |>
+  ggplot(aes(Ano, `Diversidade (D de Gini-Simpson)`)) +
+  geom_line(linewidth = 1) +
+  theme_bw() +
+  theme(axis.text = element_text(size = 20, color = "black"),
+        axis.title = element_text(size = 20, color = "black"),
+        legend.text = element_text(size = 20, color = "black"),
+        legend.title = element_text(size = 20, color = "black"),
+        legend.position = "bottom",
+        panel.background = element_rect(linewidth = 1,
+                                        color = "black")) +
+  ggview::canvas(height = 10, width = 12)
