@@ -185,3 +185,9 @@ imagem_mapas <- list.files(path = "./mapas_uso_cobertura_solo",
   magick::image_read()
 
 imagem_mapas
+
+## Criar gif ----
+
+gif_amaraji_uso <- imagem_mapas |> magick::image_animate(fps = 1)
+
+gif_amaraji_uso
