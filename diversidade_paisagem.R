@@ -191,3 +191,7 @@ imagem_mapas
 gif_amaraji_uso <- imagem_mapas |> magick::image_animate(fps = 1)
 
 gif_amaraji_uso
+
+## Exportar gif ----
+
+gif_amaraji_uso |> magick::image_write("./mapas_uso_cobertura_solo/gif_amaraji_uso_cobertura_solo.gif")
