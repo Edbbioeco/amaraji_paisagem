@@ -14,14 +14,12 @@ library(magick)
 
 library(landscapemetrics)
 
-library(gganimate)
-
 # Shapefile de Amaraji----
 
 ## Importar ----
 
 amaraji <- geobr::read_municipality(
-  year = 2025,
+  year = 2022,
   code_muni = geobr::lookup_muni(name_muni = "Amaraji",
                                  year = 2022) %>%
     .$code_muni)
