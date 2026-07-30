@@ -154,20 +154,34 @@ purrr::imap(uso_solo_trat,
 
               ~ggplot() +
                 tidyterra::geom_spatraster(data = .x) +
-                scale_fill_viridis_c(option = "turbo",
-                                     na.value = "transparent") +
+                scale_fill_manual(values = c("3" = "darkgreen",
+                                             "4" = "forestgreen",
+                                             "11" = "mediumseagreen",
+                                             "15" = "goldenrod",
+                                             "20" = "darkolivegreen3",
+                                             "21" = "darkolivegreen1",
+                                             "24" = "orangered4",
+                                             "33" = "blue"),
+                                  breaks = c("3",
+                                             "4",
+                                             "11",
+                                             "15",
+                                             "20",
+                                             "21",
+                                             "24",
+                                             "33"),
+                                  labels = c("Floresta",
+                                             "Savana",
+                                             "Campo alagado",
+                                             "Pastagem",
+                                             "Cana-de-açúcar",
+                                             "Mosaico de usos",
+                                             "Área urbana",
+                                             "Corpo hídrico"),
+                                  na.translate = FALSE) +
+                guides(fill = guide_legend(title.position = "top",
+                                           title.hjust = 0.5)) +
                 labs(title = .y) +
-                scale_fill_viridis_c(option = "turbo",
-                                     na.value = "transparent",
-                                     guide = guide_colourbar(
-
-                                       title.position = "top",
-                                       title.hjust = 0.5,
-                                       barwidth = 20,
-                                       frame.colour = "black",
-                                       ticks.colour = "black")
-
-                ) +
                 labs(title = paste0("Uso e cobertura do solo para ", .y),
                      subtitle = "Fonte: MapBiomas",
                      fill = "Classe de uso e cobertura do solo") +
