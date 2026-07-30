@@ -68,7 +68,15 @@ uso_solo
 
 ## Remover os NULL ----
 
-uso_solo_trat <- uso_solo |> purrr::compact()
+uso_solo_trat <- uso_solo |>
+  purrr::compact() |>
+  purrr::map(purrr::in_parallel(
+
+    ~.x |> terra::as.factor()
+
+  ),
+  .progress = TRUE)
+
 
 uso_solo_trat
 
@@ -79,7 +87,7 @@ purrr::imap(uso_solo_trat,
 
               ~ggplot() +
                 tidyterra::geom_spatraster(data = .x) +
-                scale_fill_viridis_c(option = "turbo",
+                scale_fill_viridis_d(option = "turbo",
                                      na.value = "transparent") +
                 labs(title = .y)
 
