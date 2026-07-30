@@ -9,3 +9,7 @@
 # Evolução da paisagem
 
 ![](gif_amaraji_uso_cobertura_solo.gif)
+
+# Legenda das classes de uso e cobertura do solo
+
+![](legenda_mapbiomas.png)
