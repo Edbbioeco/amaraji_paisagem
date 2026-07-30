@@ -101,20 +101,17 @@ purrr::imap(uso_solo_trat,
 
               ~ggplot() +
                 tidyterra::geom_spatraster(data = .x) +
-                scale_fill_viridis_c(option = "turbo",
-                                     na.value = "transparent") +
-                labs(title = .y) +
-                scale_fill_viridis_c(option = "turbo",
-                                     na.value = "transparent",
-                                     guide = guide_colourbar(
+                scale_fill_viridis_d(option = "turbo",
+                                     na.translate = FALSE,
+                                     guide = guide_legend(
 
                                        title.position = "top",
-                                       title.hjust = 0.5,
-                                       barwidth = 20,
-                                       frame.colour = "black",
-                                       ticks.colour = "black")
+                                       title.hjust = 0.5
 
-                ) +
+                                       )
+
+                                     ) +
+                labs(title = .y) +
                 labs(title = paste0("Uso e cobertura do solo para ", .y),
                      subtitle = "Fonte: MapBiomas",
                      fill = "Classe de uso e cobertura do solo") +
