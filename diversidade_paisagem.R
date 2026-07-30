@@ -231,7 +231,9 @@ gif_amaraji_uso
 
 ## Exportar gif ----
 
-gif_amaraji_uso |> magick::image_write("./gif_amaraji_uso_cobertura_solo.gif")
+gif_amaraji_uso |>
+  magick::image_scale("1280x1066!") |>
+  magick::image_write("./gif_amaraji_uso_cobertura_solo.gif")
 
 ## Exportar como vídeo ----
 
