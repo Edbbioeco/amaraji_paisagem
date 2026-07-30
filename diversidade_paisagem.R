@@ -233,6 +233,14 @@ gif_amaraji_uso
 
 gif_amaraji_uso |> magick::image_write("./gif_amaraji_uso_cobertura_solo.gif")
 
+## Exportar como vídeo ----
+
+gif_amaraji_uso |>
+  magick::image_scale("1280x1066!") |>
+  magick::image_write_video(
+    path = "./gif_amaraji_uso_cobertura_solo.mp4",
+    framerate = 1)
+
 # Diversidade da paisagem ----
 
 ## Calcular a diversidade ----
