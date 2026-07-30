@@ -195,7 +195,7 @@ gif_amaraji_uso
 
 ## Exportar gif ----
 
-gif_amaraji_uso |> magick::image_write("./mapas_uso_cobertura_solo/gif_amaraji_uso_cobertura_solo.gif")
+gif_amaraji_uso |> magick::image_write("./gif_amaraji_uso_cobertura_solo.gif")
 
 # Diversidade da paisagem ----
 
