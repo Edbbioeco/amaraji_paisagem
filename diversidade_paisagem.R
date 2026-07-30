@@ -20,8 +20,11 @@ library(gganimate)
 
 ## Importar ----
 
-amaraji <- geobr::read_municipality(year = 2025) |>
-  dplyr::filter(name_muni == "Amaraji")
+amaraji <- geobr::read_municipality(
+  year = 2025,
+  code_muni = geobr::lookup_muni(name_muni = "Amaraji",
+                                 year = 2022) %>%
+    .$code_muni)
 
 ## Visualizar ----
 
