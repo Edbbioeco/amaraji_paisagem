@@ -39,19 +39,21 @@ uso_solo <- purrr::map(
 
     \(periodo){
 
-      raster_uso_mapbiomas <- purrr::safely(
-        \(periodo){
+      tryCatch({
 
-          terra::rast(paste0(
-            "https://storage.googleapis.com/mapbiomas-public/initiatives/brasil/collection_10/lulc/coverage/brazil_coverage_",
-            periodo,
-            ".tif")) |>
-            terra::crop(amaraji) |>
-            terra::mask(amaraji)
+        terra::rast(paste0(
+          "https://storage.googleapis.com/mapbiomas-public/initiatives/brasil/collection_10/lulc/coverage/brazil_coverage_",
+          periodo,
+          ".tif")) |>
+          terra::crop(amaraji) |>
+          terra::mask(amaraji)
+        },
+        error = \(e) {
+
+          message("Erro no ano ", periodo, ": ", e$message)
+          NULL
 
         })
-
-      raster_uso_mapbiomas(periodo)
 
       }
 
