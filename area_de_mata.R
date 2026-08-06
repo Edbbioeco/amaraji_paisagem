@@ -81,3 +81,23 @@ uso_solo_trat
 codigos <- c(1:6, 10:12, 29, 32, 49:50) |> as.character()
 
 codigos
+
+## Filtrar para as áreas de mata ----
+
+uso_trat_mata <- purrr::imap(
+  uso_solo_trat,
+  ~.x |>
+    tidyterra::mutate(
+      !!{{paste0("brazil_coverage_", .y)}} := dplyr::case_when(
+
+        .data[[paste0("brazil_coverage_", .y)]] %in%
+          (codigos |> as.numeric()) ~ "Mata",
+        .default = .data[[paste0("brazil_coverage_", .y)]] |> as.character()
+
+      )
+    ) |>
+    tidyterra::filter(.data[[paste0("brazil_coverage_", .y)]] == "Mata"),
+  .progress = TRUE)
+
+uso_trat_mata
+
