@@ -33,3 +33,10 @@ amaraji
 ggplot() +
   geom_sf(data = amaraji, color = "black")
 
+# Raster de imagem RGB de satélite de Amaraji ----
+
+## Iniciar sessão do cliente ----
+
+cliente <- CDSE::GetOAuthClient(id = Sys.getenv("CDSE_ID"),
+                                secret = Sys.getenv("CDSE_SECRET"))
+
