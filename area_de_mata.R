@@ -104,3 +104,17 @@ uso_trat_mata <- purrr::imap(
 
 uso_trat_mata
 
+## Visualizar mapas ----
+
+purrr::imap(uso_trat_mata,
+            purrr::in_parallel(
+
+              ~ggplot()+
+                tidyterra::geom_spatraster(data = .x) +
+                scale_fill_manual(values = "forestgreen",
+                                  na.translate = FALSE) +
+                geom_sf(data = amaraji, color = "black", fill = "transparent")
+                labs(title = .y)
+
+              ),
+            .progress = TRUE)
