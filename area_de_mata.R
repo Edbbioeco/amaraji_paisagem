@@ -38,30 +38,26 @@ ggplot() +
 uso_solo <- purrr::map(
   1985:2025,
   purrr::in_parallel(
-    \(periodo) {
 
-      tryCatch({
+    \(periodo){
 
-        terra::rast(paste0(
-          "https://storage.googleapis.com/mapbiomas-public/initiatives/brasil/collection_10/lulc/coverage/brazil_coverage_",
-          periodo,
-          ".tif"
-        )) |>
-          terra::crop(amaraji) |>
-          terra::mask(amaraji)
+      raster_uso_mapbiomas <- purrr::safely(
+        \(periodo){
 
-      }, error = \(e) {
+          terra::rast(paste0(
+            "https://storage.googleapis.com/mapbiomas-public/initiatives/brasil/collection_10/lulc/coverage/brazil_coverage_",
+            periodo,
+            ".tif")) |>
+            terra::crop(amaraji) |>
+            terra::mask(amaraji)
 
-        message("Erro no ano ", periodo, ": ", e$message)
-        NULL
+        })
+
+      raster_uso_mapbiomas(periodo)
 
       }
 
-      )
-
-    }
-
-  ), .progress = TRUE) |>
-  setNames(1985:2025 |> as.character())
+    ),
+  .progress = TRUE)
 
 uso_solo
