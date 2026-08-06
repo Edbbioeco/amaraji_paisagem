@@ -73,3 +73,11 @@ uso_solo_trat <- uso_solo |>
 
 
 uso_solo_trat
+
+## Filtrar a área de mata ----
+
+### Códigos para área de mata ----
+
+codigos <- c(1:6, 10:12, 29, 32, 49:50) |> as.character()
+
+codigos
