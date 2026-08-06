@@ -113,7 +113,7 @@ purrr::imap(uso_trat_mata,
                 tidyterra::geom_spatraster(data = .x) +
                 scale_fill_manual(values = "forestgreen",
                                   na.translate = FALSE) +
-                geom_sf(data = amaraji, color = "black", fill = "transparent")
+                geom_sf(data = amaraji, color = "black", fill = "transparent") +
                 labs(title = .y)
 
               ),
