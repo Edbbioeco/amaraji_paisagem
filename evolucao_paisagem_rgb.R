@@ -26,3 +26,10 @@ amaraji <- geobr::read_municipality(
                                  year = 2022) %>%
     .$code_muni)
 
+## Visualizar ----
+
+amaraji
+
+ggplot() +
+  geom_sf(data = amaraji, color = "black")
+
