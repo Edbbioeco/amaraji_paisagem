@@ -59,3 +59,17 @@ uso_solo <- purrr::map(
   .progress = TRUE)
 
 uso_solo
+
+## Remover os NULL ----
+
+uso_solo_trat <- uso_solo |>
+  purrr::compact() |>
+  purrr::map(purrr::in_parallel(
+
+    ~.x |> terra::as.factor()
+
+  ),
+  .progress = TRUE)
+
+
+uso_solo_trat
