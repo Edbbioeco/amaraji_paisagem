@@ -16,8 +16,6 @@ library(magick)
 
 ## Importar ----
 
-## Importar ----
-
 amaraji <- geobr::read_municipality(
   year = 2022,
   code_muni = geobr::lookup_muni(name_muni = "Amaraji",
