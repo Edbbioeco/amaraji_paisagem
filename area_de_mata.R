@@ -50,7 +50,8 @@ uso_solo <- purrr::map(
         },
         error = \(e) {
 
-          message("Erro no ano ", periodo, ": ", e$message)
+          message("Erro no ano ", periodo, ": ", e$message) |>
+            crayon::red()
           NULL
 
         })
