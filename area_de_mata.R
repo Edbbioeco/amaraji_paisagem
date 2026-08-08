@@ -121,3 +121,46 @@ purrr::imap(uso_trat_mata,
 
               ),
             .progress = TRUE)
+
+## Criar e exportar os mapas ----
+
+purrr::imap(uso_trat_mata,
+            purrr::in_parallel(
+
+              ~ggplot()+
+                tidyterra::geom_spatraster(data = .x) +
+                scale_fill_manual(values = "forestgreen",
+                                  na.translate = FALSE) +
+                geom_sf(data = amaraji, color = "black",
+                        fill = "transparent") +
+                guides(fill = guide_legend(title.position = "top",
+                                           title.hjust = 0.5)) +
+                labs(title = paste0("Área de mata para ", .y),
+                     subtitle = "Fonte: MapBiomas",
+                     fill = "Mata") +
+                theme_bw() +
+                theme(axis.text = element_text(size = 20, color = "black"),
+                      legend.text = element_text(size = 20, color = "black"),
+                      legend.title = element_text(size = 20, color = "black"),
+                      legend.position = "bottom",
+                      strip.text = element_text(size = 30, color = "black"),
+                      strip.background = element_rect(color = "black",
+                                                      linewidth = 1),
+                      panel.background = element_rect(linewidth = 1,
+                                                      color = "black"),
+                      plot.title = element_text(size = 20, color = "black"),
+                      plot.subtitle = element_text(size = 17.5, color = "black"))
+
+            ),
+            .progress = TRUE) |>
+  purrr::imap(purrr::in_parallel(
+
+    ~ggsave(.x,
+            filename = paste0("./mapas_area_mata/mapa_",
+                              .y,
+                              ".png"),
+            height = 10,
+            width = 12)
+
+  ),
+  .progres = TRUE)
