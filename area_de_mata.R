@@ -6,6 +6,8 @@ library(tidyverse)
 
 library(terra)
 
+library(crayon)
+
 library(tidyterra)
 
 library(ggview)
