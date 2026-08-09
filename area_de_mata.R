@@ -272,9 +272,10 @@ qtd_manchas <- purrr::imap_dfr(
                       terra::minmax() |>
                       as.numeric() %>%
                       .[2],
-                    Ano = .y)
+                    Ano = .y |> as.numeric())
 
     ),
   .progress = TRUE)
 
 qtd_manchas
+
