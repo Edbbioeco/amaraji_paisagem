@@ -279,3 +279,22 @@ qtd_manchas <- purrr::imap_dfr(
 
 qtd_manchas
 
+## Visualizar a série temporal ----
+
+qtd_manchas |>
+  ggplot(aes(Ano, `Número de fragmentos`)) +
+  geom_line(linewidth = 1) +
+  scale_y_continuous(limits = c(1000, 1700)) +
+  theme_bw() +
+  theme(axis.text = element_text(size = 20, color = "black"),
+        axis.title = element_text(size = 20, color = "black"),
+        legend.text = element_text(size = 20, color = "black"),
+        legend.title = element_text(size = 20, color = "black"),
+        legend.position = "bottom",
+        panel.background = element_rect(linewidth = 1,
+                                        color = "black")) +
+  ggview::canvas(height = 10, width = 12)
+
+ggsave(filename = "./quantidade_fragmentos_mata.png",
+       height = 10, width = 12)
+
