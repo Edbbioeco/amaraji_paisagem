@@ -205,9 +205,9 @@ area_mata <- purrr::imap_dfr(
   purrr::in_parallel(
 
     ~tibble::tibble(`Área de mata (km²)` = .x |>
-                      terra::expanse() |>
+                      terra::expanse(unit = "km") |>
                       as.numeric() %>%
-                      .[2] / 1e6,
+                      .[2],
                     Ano = .y |> as.numeric())
 
     ),
