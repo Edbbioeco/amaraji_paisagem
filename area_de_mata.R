@@ -298,3 +298,27 @@ qtd_manchas |>
 ggsave(filename = "./quantidade_fragmentos_mata.png",
        height = 10, width = 12)
 
+# Área das manchas ----
+
+## Calcular área ----
+
+area_manchas <- purrr::imap_dfr(
+  manchas,
+  purrr::in_parallel(
+
+    ~tibble::tibble(`Área média dos fragmentos (km²)` = .x |>
+                      terra::expanse(unit="km",
+                                     byValue=TRUE) |>
+                      dplyr::pull(area) |>
+                      mean(),
+                    sd = .x |>
+                      terra::expanse(unit="km",
+                                     byValue=TRUE) |>
+                      dplyr::pull(area) |>
+                      sd(),
+                    Ano = .y |> as.numeric())
+
+    ),
+  .progress = TRUE)
+
+area_manchas
