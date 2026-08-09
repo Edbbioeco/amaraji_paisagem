@@ -214,3 +214,22 @@ area_mata <- purrr::imap_dfr(
   .progress = TRUE)
 
 area_mata
+
+## Visualizar ----
+
+area_mata |>
+  ggplot(aes(Ano, `Área`)) +
+  geom_line(linewidth = 1) +
+  theme_bw() +
+  theme(axis.text = element_text(size = 20, color = "black"),
+        axis.title = element_text(size = 20, color = "black"),
+        legend.text = element_text(size = 20, color = "black"),
+        legend.title = element_text(size = 20, color = "black"),
+        legend.position = "bottom",
+        panel.background = element_rect(linewidth = 1,
+                                        color = "black")) +
+  ggview::canvas(height = 10, width = 12)
+
+ggsave(filename = "./area_mata.png",
+       height = 10, width = 12)
+
