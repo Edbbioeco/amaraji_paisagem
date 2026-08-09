@@ -164,3 +164,14 @@ purrr::imap(uso_trat_mata,
 
   ),
   .progres = TRUE)
+
+# Gif dos mapas ----
+
+## Importar imagens ----
+
+imagens_mata <- list.files(path = "./mapas_area_mata/",
+                           pattern = "^mapa_.*.png$",
+                           full.names = TRUE) |>
+  magick::image_read()
+
+imagens_mata
