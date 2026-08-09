@@ -195,3 +195,22 @@ gif_mata |>
   magick::image_write_video(
     path = "./gif_amaraji_area_mata.mp4",
     framerate = 1)
+
+# Área de mata ----
+
+## Calcular área da mata ----
+
+area_mata <- purrr::imap_dfr(
+  uso_trat_mata,
+  purrr::in_parallel(
+
+    ~tibble::tibble(Área = .x |>
+                      terra::expanse() |>
+                      as.numeric() %>%
+                      .[2] / 1e6,
+                    Ano = .y |> as.numeric())
+
+    ),
+  .progress = TRUE)
+
+area_mata
