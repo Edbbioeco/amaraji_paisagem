@@ -204,7 +204,7 @@ area_mata <- purrr::imap_dfr(
   uso_trat_mata,
   purrr::in_parallel(
 
-    ~tibble::tibble(Área = .x |>
+    ~tibble::tibble(`Área de mata (km²)` = .x |>
                       terra::expanse() |>
                       as.numeric() %>%
                       .[2] / 1e6,
@@ -218,7 +218,7 @@ area_mata
 ## Visualizar ----
 
 area_mata |>
-  ggplot(aes(Ano, `Área`)) +
+  ggplot(aes(Ano, `Área de mata (km²)`)) +
   geom_line(linewidth = 1) +
   theme_bw() +
   theme(axis.text = element_text(size = 20, color = "black"),
