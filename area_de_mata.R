@@ -187,3 +187,11 @@ gif_mata
 gif_mata |>
   magick::image_scale("1280x1066!") |>
   magick::image_write("./gif_amaraji_area_mata.gif")
+
+## Exportar como vídeo ----
+
+gif_mata |>
+  magick::image_scale("1280x1066!") |>
+  magick::image_write_video(
+    path = "./gif_amaraji_area_mata.mp4",
+    framerate = 1)
