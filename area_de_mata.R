@@ -181,3 +181,9 @@ imagens_mata
 gif_mata <- imagens_mata |> magick::image_animate(fps = 1)
 
 gif_mata
+
+## Exportar gif ----
+
+gif_mata |>
+  magick::image_scale("1280x1066!") |>
+  magick::image_write("./gif_amaraji_area_mata.gif")
