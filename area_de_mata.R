@@ -261,3 +261,20 @@ purrr::imap(manchas,
 
             ),
             .progress = TRUE)
+
+## Quantidade de manchas ----
+
+qtd_manchas <- purrr::imap_dfr(
+  manchas,
+  purrr::in_parallel(
+
+    ~tibble::tibble(`Número de fragmentos` = .x |>
+                      terra::minmax() |>
+                      as.numeric() %>%
+                      .[2],
+                    Ano = .y)
+
+    ),
+  .progress = TRUE)
+
+qtd_manchas
