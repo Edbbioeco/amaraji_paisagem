@@ -247,3 +247,17 @@ manchas <- purrr::map(uso_trat_mata,
                       .progress = TRUE)
 
 manchas
+
+## Visualizar ----
+
+purrr::imap(manchas,
+            purrr::in_parallel(
+
+              ~ggplot()+
+                tidyterra::geom_spatraster(data = .x) +
+                scale_fill_viridis_c(na.value = "transparent") +
+                geom_sf(data = amaraji, color = "black", fill = "transparent") +
+                labs(title = .y)
+
+            ),
+            .progress = TRUE)
