@@ -328,6 +328,22 @@ area_manchas
 area_manchas |>
   ggplot(aes(Ano, `Área média dos fragmentos (km²)`)) +
   geom_line(linewidth = 1) +
+  theme_bw() +
+  theme(axis.text = element_text(size = 20, color = "black"),
+        axis.title = element_text(size = 20, color = "black"),
+        legend.text = element_text(size = 20, color = "black"),
+        legend.title = element_text(size = 20, color = "black"),
+        legend.position = "bottom",
+        panel.background = element_rect(linewidth = 1,
+                                        color = "black")) +
+  ggview::canvas(height = 10, width = 12)
+
+ggsave(filename = "./area_media_fragmentos_mata.png",
+       height = 10, width = 12)
+
+area_manchas |>
+  ggplot(aes(Ano, `Área média dos fragmentos (km²)`)) +
+  geom_line(linewidth = 1) +
   geom_point(size = 5) +
   geom_errorbar(aes(y = `Área média dos fragmentos (km²)`,
                     ymin = `Área média dos fragmentos (km²)` - sd,
@@ -342,5 +358,5 @@ area_manchas |>
                                         color = "black")) +
   ggview::canvas(height = 10, width = 12)
 
-ggsave(filename = "./area_media_fragmentos_mata.png",
+ggsave(filename = "./area_media_sd_fragmentos_mata.png",
        height = 10, width = 12)
