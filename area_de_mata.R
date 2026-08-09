@@ -233,3 +233,17 @@ area_mata |>
 ggsave(filename = "./area_mata.png",
        height = 10, width = 12)
 
+# Quantificar as manchas ----
+
+## Identificar as manchas ----
+
+manchas <- purrr::map(uso_trat_mata,
+                      purrr::in_parallel(
+
+                        ~.x |> terra::patches(directions=8,
+                                              zeroAsNA=TRUE)
+
+                      ),
+                      .progress = TRUE)
+
+manchas
