@@ -302,3 +302,78 @@ df_area_classes <- purrr::imap_dfr(
   .progress = TRUE)
 
 df_area_classes
+
+## Visualizar série tmporal ----
+
+df_area_classes |>
+  ggplot(aes(Ano, `Área (km²)`, color = Classe, fill = Classe)) +
+  geom_line(linewidth = 1) +
+  geom_point(shape = 21, color = "black", stroke = 1, size = 5) +
+  scale_color_manual(values = c("3" = "darkgreen",
+                                "4" = "forestgreen",
+                                "11" = "mediumseagreen",
+                                "15" = "goldenrod",
+                                "20" = "darkolivegreen3",
+                                "21" = "darkolivegreen1",
+                                "24" = "orangered4",
+                                "33" = "blue"),
+                     breaks = c("3",
+                                "4",
+                                "11",
+                                "15",
+                                "20",
+                                "21",
+                                "24",
+                                "33"),
+                     labels = c("Floresta",
+                                "Savana",
+                                "Campo alagado",
+                                "Pastagem",
+                                "Cana-de-açúcar",
+                                "Mosaico de usos",
+                                "Área urbana",
+                                "Corpo hídrico"),
+                    na.translate = FALSE) +
+  scale_fill_manual(values = c("3" = "darkgreen",
+                               "4" = "forestgreen",
+                               "11" = "mediumseagreen",
+                               "15" = "goldenrod",
+                               "20" = "darkolivegreen3",
+                               "21" = "darkolivegreen1",
+                               "24" = "orangered4",
+                               "33" = "blue"),
+                    breaks = c("3",
+                               "4",
+                               "11",
+                               "15",
+                               "20",
+                               "21",
+                               "24",
+                               "33"),
+                    labels = c("Floresta",
+                               "Savana",
+                               "Campo alagado",
+                               "Pastagem",
+                               "Cana-de-açúcar",
+                               "Mosaico de usos",
+                               "Área urbana",
+                               "Corpo hídrico"),
+                    na.translate = FALSE) +
+  guides(color = guide_legend(title.position = "top",
+                              title.hjust = 0.5),
+         fill = guide_legend(title.position = "top",
+                             title.hjust = 0.5))  +
+  theme_bw() +
+  theme(axis.text = element_text(size = 20, color = "black"),
+        axis.title = element_text(size = 20, color = "black"),
+        legend.text = element_text(size = 20, color = "black"),
+        legend.title = element_text(size = 20, color = "black"),
+        legend.position = "bottom",
+        strip.text = element_text(size = 30, color = "black"),
+        strip.background = element_rect(color = "black",
+                                        linewidth = 1),
+        panel.background = element_rect(linewidth = 1,
+                                        color = "black"),
+        plot.title = element_text(size = 20, color = "black"),
+        plot.subtitle = element_text(size = 17.5, color = "black")) +
+  ggview::canvas(height = 10, width = 12)
