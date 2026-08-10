@@ -98,7 +98,7 @@ purrr::map(datas,
                              collection = "sentinel-3-slstr-l2",
                              format = "image/tiff",
                              mosaicking_order = "leastRecent",
-                             resolution = 10,
+                             resolution = 1000,
                              mask = TRUE,
                              buffer = 100,
                              client = cliente)
