@@ -40,3 +40,15 @@ ggplot() +
 cliente <- CDSE::GetOAuthClient(id = Sys.getenv("CDSE_ID"),
                                 secret = Sys.getenv("CDSE_SECRET"))
 
+## Pesquisar católogo ----
+
+catologo <- CDSE::SearchCatalog(
+  client = cliente,
+  aoi = amaraji,
+  from = "2000-01-01",
+  to = "2024-12-31",
+  collection = "sentinel-3-slstr-l2",
+  filter = "eo:cloud_cover < 1"
+  )
+
+catologo
