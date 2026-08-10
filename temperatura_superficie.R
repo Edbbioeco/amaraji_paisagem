@@ -46,7 +46,7 @@ catalogo <- CDSE::SearchCatalog(
   client = cliente,
   aoi = amaraji,
   from = "2000-01-01",
-  to = "2024-12-31",
+  to = "2026-07-01",
   collection = "sentinel-3-slstr-l2",
   filter = "eo:cloud_cover < 1"
   )
