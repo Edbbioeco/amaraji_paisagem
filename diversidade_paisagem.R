@@ -280,3 +280,24 @@ div_paisagem |>
 
 ggsave(filename = "./diversidade_paisagem.png",
        height = 10, width = 12)
+
+# Área das classes ----
+
+## Criar o data frame das áreas das classes ----
+
+df_area_classes <- purrr::imap_dfr(
+  uso_solo_trat,
+  purrr::in_parallel(
+
+    ~.x |>
+      terra::expanse(unit = "km",
+                     byValue = TRUE) |>
+      dplyr::select(2:3) |>
+      dplyr::rename("Classe" = 1,
+                    "Área (km²)" = 2) |>
+      dplyr::mutate(Ano = .y |> as.numeric())
+
+    ),
+  .progress = TRUE)
+
+df_area_classes
