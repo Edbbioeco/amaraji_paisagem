@@ -52,3 +52,16 @@ catalogo <- CDSE::SearchCatalog(
   )
 
 catalogo
+
+## Selecionar um registro por mês e ano ----
+
+datas <- catalogo |>
+  dplyr::mutate(Ano = acquisitionDate |> lubridate::year(),
+                Mes = acquisitionDate |> lubridate::month()) |>
+  dplyr::group_by(Ano, Mes) |>
+  dplyr::arrange(tileCloudCover) |>
+  dplyr::select(acquisitionDate, tileCloudCover, Ano, Mes) |>
+  dplyr::slice_head(n = 1) |>
+  dplyr::pull(acquisitionDate)
+
+datas
