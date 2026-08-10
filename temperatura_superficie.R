@@ -65,3 +65,19 @@ datas <- catalogo |>
   dplyr::pull(acquisitionDate)
 
 datas
+
+## Evalscript ----
+
+evalscript <- '
+//VERSION=3
+function setup() {
+  return {
+    input: ["LST", "dataMask"],
+    output: { bands: 2, sampleType: "FLOAT32" }
+  }
+}
+function evaluatePixel(sample) {
+  return [sample.LST, sample.dataMask]
+}
+'
+evalscript
