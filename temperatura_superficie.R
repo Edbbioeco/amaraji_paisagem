@@ -151,7 +151,8 @@ purrr::imap(raster_temp,
                 geom_sf(data = amaraji,
                         color = "black",
                         fill = "transparent",
-                        linewidth = 1)
+                        linewidth = 1) +
+                labs(title = .y |> stringr::str_remove("^temp_"))
 
             ),
             .progress = TRUE)
