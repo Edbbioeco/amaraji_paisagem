@@ -62,7 +62,8 @@ uso_solo <- purrr::map(
     }
 
   ),
-  .progress = TRUE)
+  .progress = TRUE) |>
+  setNames(1985:2025 |> as.character())
 
 uso_solo
 
