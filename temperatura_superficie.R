@@ -81,3 +81,27 @@ function evaluatePixel(sample) {
 }
 '
 evalscript
+
+## Baixar imagens ----
+
+dir.create("./temp")
+
+purrr::map(datas,
+           purrr::in_parallel(
+
+             ~CDSE::GetImage(bbox = amaraji |> sf::st_bbox(),
+                             script = evalscript,
+                             time_range = .x,
+                             file = paste0("./temp/temp_",
+                                           .x[[1]],
+                                           ".tif"),
+                             collection = "sentinel-3-slstr-l2",
+                             format = "image/tiff",
+                             mosaicking_order = "leastRecent",
+                             resolution = 10,
+                             mask = TRUE,
+                             buffer = 100,
+                             client = cliente)
+
+           ),
+           .progress = TRUE)
