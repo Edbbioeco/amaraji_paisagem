@@ -120,3 +120,15 @@ raster_temp <- purrr::map(list.files(path = "./temp",
              stringr::str_remove(".tif$"))
 
 raster_temp
+
+## Converter para °C ----
+
+raster_temp %<>%
+  purrr::map(purrr::in_parallel(
+
+    ~.x[[1]] - 273.15
+
+    ),
+    .progress = TRUE)
+
+raster_temp
