@@ -148,8 +148,10 @@ purrr::imap(raster_temp,
                                                  "yellow",
                                                  "lightyellow") |>
                                        rev()) +
-                geom_sf(data = amaraji, color = "black",
-                        fill = "transparent")
+                geom_sf(data = amaraji,
+                        color = "black",
+                        fill = "transparent",
+                        linewidth = 1)
 
             ),
             .progress = TRUE)
