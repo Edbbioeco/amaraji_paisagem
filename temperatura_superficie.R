@@ -42,7 +42,7 @@ cliente <- CDSE::GetOAuthClient(id = Sys.getenv("CDSE_ID"),
 
 ## Pesquisar católogo ----
 
-catologo <- CDSE::SearchCatalog(
+catalogo <- CDSE::SearchCatalog(
   client = cliente,
   aoi = amaraji,
   from = "2000-01-01",
@@ -51,4 +51,4 @@ catologo <- CDSE::SearchCatalog(
   filter = "eo:cloud_cover < 1"
   )
 
-catologo
+catalogo
