@@ -132,3 +132,23 @@ raster_temp %<>%
     .progress = TRUE)
 
 raster_temp
+
+## Visualizar os rasters ----
+
+purrr::imap(raster_temp,
+            purrr::in_parallel(
+
+              ~ggplot() +
+                tidyterra::geom_spatraster(data = .x) +
+                scale_fill_gradientn(colours = c("red4",
+                                                 "red",
+                                                 "orangered",
+                                                 "orange",
+                                                 "gold",
+                                                 "yellow",
+                                                 "lightyellow") |>
+                                       rev()) +
+                geom_sf(data = amaraji, color = "black")
+
+            ),
+            .progress = TRUE)
