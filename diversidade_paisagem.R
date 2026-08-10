@@ -377,3 +377,6 @@ df_area_classes |>
         plot.title = element_text(size = 20, color = "black"),
         plot.subtitle = element_text(size = 17.5, color = "black")) +
   ggview::canvas(height = 10, width = 12)
+
+ggsave(filename = "./serie_temporal_area_classes.png",
+       height = 10, width = 12)
