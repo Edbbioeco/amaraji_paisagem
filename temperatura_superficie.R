@@ -117,7 +117,11 @@ raster_temp <- purrr::map(list.files(path = "./temp",
                           ),
                           .progress = TRUE) |>
   setNames(list.files(path = "./temp") |>
-             stringr::str_remove(".tif$"))
+             stringr::str_remove(".tif$")) |>
+  purrr::discard(~.x |>
+                   terra::values() |>
+                   is.nan() |>
+                   all())
 
 raster_temp
 
