@@ -81,3 +81,22 @@ list.files(path = system.file(package = "CDSE"))
 evalscript <- "C:/Users/LENOVO/AppData/Local/R/win-library/4.6/CDSE/scripts/TrueColorS2L2A.js"
 
 evalscript
+
+## Baixar imagens ----
+
+amaraji_raster <- purrr::map(
+  datas,
+  purrr::in_parallel(
+
+    ~CDSE::GetImage(bbox = amaraji |> sf::st_bbox(),
+                    time_range = .x,
+                    collection = "landsat-ot-l1",
+                    script = evalscript,
+                    format = "image/tiff",
+                    resolution = 10,
+                    mask = TRUE,
+                    client = cliente)
+
+    ),
+  .progress = TRUE) |>
+  setNames(datas |> as.character())
