@@ -56,3 +56,20 @@ catalogo <- CDSE::SearchCatalog(aoi = amaraji,
 
 catalogo
 
+## Datas ----
+
+datas <- catalogo |>
+  dplyr::mutate(data_mes = acquisitionDate |>
+                  lubridate::floor_date("month")) |>
+  dplyr::distinct(data_mes) |>
+  dplyr::arrange(data_mes) |>
+  dplyr::mutate(data_final = data_mes |>
+                  lubridate::ceiling_date("month") - lubridate::day(1),
+                periodo = purrr::map2(data_mes,
+                                      data_final,
+                                      ~paste0(.x,
+                                              " - ",
+                                              .y))) |>
+  dplyr::pull(periodo)
+
+datas
