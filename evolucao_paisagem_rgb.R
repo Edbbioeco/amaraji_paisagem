@@ -102,3 +102,18 @@ amaraji_raster <- purrr::map(
   setNames(datas |> as.character())
 
 amaraji_raster
+
+## Recortar as imagens ----
+
+amaraji_raster_trat <- purrr::map(
+  amaraji_raster,
+  purrr::in_parallel(
+
+    ~.x |>
+      terra::crop(amaraji) |>
+      terra::mask(amaraji)
+
+    ),
+  .progress = TRUE)
+
+amaraji_raster_trat
