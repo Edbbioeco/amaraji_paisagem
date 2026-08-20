@@ -40,6 +40,10 @@ ggplot() +
 cliente <- CDSE::GetOAuthClient(id = Sys.getenv("CDSE_ID"),
                                 secret = Sys.getenv("CDSE_SECRET"))
 
+## Coleções ----
+
+CDSE::GetCollections()
+
 ### Carregar catálogo ----
 
 catalogo <- CDSE::SearchCatalog(aoi = amaraji,
