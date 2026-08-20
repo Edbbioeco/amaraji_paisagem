@@ -129,7 +129,7 @@ raster_temp_trat
 
 ## Visualizar os rasters ----
 
-purrr::imap(raster_temp,
+purrr::imap(raster_temp_trat,
             purrr::in_parallel(
 
               ~ggplot() +
