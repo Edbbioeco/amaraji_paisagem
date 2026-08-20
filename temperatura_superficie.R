@@ -100,7 +100,10 @@ raster_temp <- purrr::map(
                     client = cliente)
 
     ),
-  .progress = TRUE)
+  .progress = TRUE) |>
+  setNames(datas)
+
+raster_temp
 
 ## Importar rasters ----
 
