@@ -49,10 +49,10 @@ CDSE::GetCollections()
 catalogo <- CDSE::SearchCatalog(aoi = amaraji,
                                 from = "1985-01-01",
                                 to = "2026-07-01",
-                                collection = "landsat-ot-l1",
+                                collection = "sentinel-2-l2a",
                                 with_geometry = FALSE,
                                 client = cliente,
-                                filter = "eo:cloud_cover < 25")
+                                filter = "eo:cloud_cover < 10")
 
 catalogo
 
@@ -90,7 +90,7 @@ amaraji_raster <- purrr::map(
 
     ~CDSE::GetImage(bbox = amaraji |> sf::st_bbox(),
                     time_range = .x,
-                    collection = "landsat-ot-l1",
+                    collection = "sentinel-2-l2a",
                     script = evalscript,
                     format = "image/tiff",
                     resolution = 10,
