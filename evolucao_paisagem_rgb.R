@@ -49,10 +49,10 @@ CDSE::GetCollections()
 catalogo <- CDSE::SearchCatalog(aoi = amaraji,
                                 from = "1985-01-01",
                                 to = "2026-07-01",
-                                collection = "sentinel-2-l2a",
+                                collection = "landsat-ot-l1",
                                 with_geometry = FALSE,
                                 client = cliente,
-                                filter = "eo:cloud_cover < 5")
+                                filter = "eo:cloud_cover < 50")
 
 catalogo
 
