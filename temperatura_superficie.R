@@ -107,16 +107,7 @@ raster_temp
 
 ## Importar rasters ----
 
-raster_temp <- purrr::map(list.files(path = "./temp",
-                                     full.names = TRUE),
-                          purrr::in_parallel(
-
-                            ~terra::rast(.x)
-
-                          ),
-                          .progress = TRUE) |>
-  setNames(list.files(path = "./temp") |>
-             stringr::str_remove(".tif$")) |>
+raster_temp_trat <- raster_temp |>
   purrr::discard(~.x |>
                    terra::values() |>
                    is.nan() |>
