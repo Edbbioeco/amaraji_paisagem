@@ -117,7 +117,7 @@ raster_temp_trat
 
 ## Converter para °C ----
 
-raster_temp %<>%
+raster_temp_trat %<>%
   purrr::map(purrr::in_parallel(
 
     ~.x[[1]] - 273.15
@@ -125,7 +125,7 @@ raster_temp %<>%
     ),
     .progress = TRUE)
 
-raster_temp
+raster_temp_trat
 
 ## Visualizar os rasters ----
 
