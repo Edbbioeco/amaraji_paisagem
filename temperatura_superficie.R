@@ -84,27 +84,23 @@ evalscript
 
 ## Baixar imagens ----
 
-dir.create("./temp")
+raster_temp <- purrr::map(
+  datas,
+  purrr::in_parallel(
 
-purrr::map(datas,
-           purrr::in_parallel(
+    ~CDSE::GetImage(bbox = amaraji |> sf::st_bbox(),
+                    script = evalscript,
+                    time_range = .x,
+                    collection = "sentinel-3-slstr-l2",
+                    format = "image/tiff",
+                    mosaicking_order = "leastRecent",
+                    resolution = 1000,
+                    mask = TRUE,
+                    buffer = 100,
+                    client = cliente)
 
-             ~CDSE::GetImage(bbox = amaraji |> sf::st_bbox(),
-                             script = evalscript,
-                             time_range = .x,
-                             file = paste0("./temp/temp_",
-                                           .x,
-                                           ".tif"),
-                             collection = "sentinel-3-slstr-l2",
-                             format = "image/tiff",
-                             mosaicking_order = "leastRecent",
-                             resolution = 1000,
-                             mask = TRUE,
-                             buffer = 100,
-                             client = cliente)
-
-           ),
-           .progress = TRUE)
+    ),
+  .progress = TRUE)
 
 ## Importar rasters ----
 
