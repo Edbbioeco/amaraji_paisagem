@@ -73,3 +73,11 @@ datas <- catalogo |>
   dplyr::pull(periodo)
 
 datas
+
+## Evalscript ----
+
+list.files(path = system.file(package = "CDSE"))
+
+evalscript <- "C:/Users/LENOVO/AppData/Local/R/win-library/4.6/CDSE/scripts/TrueColorS2L2A.js"
+
+evalscript
