@@ -52,7 +52,7 @@ catalogo <- CDSE::SearchCatalog(aoi = amaraji,
                                 collection = "landsat-ot-l1",
                                 with_geometry = FALSE,
                                 client = cliente,
-                                filter = "eo:cloud_cover < 50")
+                                filter = "eo:cloud_cover < 25")
 
 catalogo
 
@@ -117,3 +117,16 @@ amaraji_raster_trat <- purrr::map(
   .progress = TRUE)
 
 amaraji_raster_trat
+
+## Visualizar ----
+
+purrr::imap(
+  amaraji_raster_trat,
+  purrr::in_parallel(
+
+    ~ggplot() +
+      tidyterra::geom_spatraster_rgb(data = .x) +
+      labs(title = .y)
+
+  ),
+  .progress = TRUE)
