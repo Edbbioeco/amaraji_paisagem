@@ -113,7 +113,7 @@ raster_temp_trat <- raster_temp |>
                    is.nan() |>
                    all())
 
-raster_temp
+raster_temp_trat
 
 ## Converter para °C ----
 
