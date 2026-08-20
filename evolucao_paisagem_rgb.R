@@ -100,3 +100,5 @@ amaraji_raster <- purrr::map(
     ),
   .progress = TRUE) |>
   setNames(datas |> as.character())
+
+amaraji_raster
