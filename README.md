@@ -17,3 +17,5 @@
 # Altitude
 
 ![](/amaraji_altitude.png)
+
+![](/histograma_amaraji_altitude.png)
