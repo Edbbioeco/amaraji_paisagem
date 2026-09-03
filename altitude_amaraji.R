@@ -25,3 +25,14 @@ amaraji
 
 ggplot() +
   geom_sf(data = amaraji, color = "black")
+
+# Altitude ----
+
+## Baixar dados ----
+
+alt <- amaraji |>
+  elevatr::get_aws_terrain(z = 14,
+                           prj = amaraji |> sf::st_crs(),
+                           clip = "locations") |>
+  terra::mask(amaraji) |>
+  terra::crop(amaraji)
