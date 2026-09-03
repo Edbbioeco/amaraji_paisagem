@@ -70,3 +70,15 @@ ggplot() +
 
 ggsave(filename = "./amaraji_altitude.png",
        height = 10, width = 12)
+
+## Histograma dos valores de Altitude ----
+
+### Criar data frame ----
+
+df_histo <- alt |>
+  terra::values() |>
+  na.omit() |>
+  as.data.frame() |>
+  dplyr::rename("Altitude (m)" = 1)
+
+df_histo
