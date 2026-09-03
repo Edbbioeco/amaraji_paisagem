@@ -42,4 +42,5 @@ alt <- amaraji |>
 alt
 
 ggplot() +
-  tidyterra::geom_spatraster(data = alt)
+  tidyterra::geom_spatraster(data = alt) +
+  scale_fill_viridis_c(na.value = "transparent")
