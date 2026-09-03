@@ -89,7 +89,7 @@ df_histo |>
   ggplot(aes(`Altitude (m)`)) +
   geom_histogram(color = "black") +
   labs(y = "Quantidade de pixels") +
-  scale_x_continuous(breaks = seq(0, 850, 50)) +
+  scale_x_continuous(breaks = seq(0, 850, 150)) +
   theme_bw() +
   theme(axis.text = element_text(color = "black", size = 20),
         axis.title = element_text(color = "black", size = 20),
