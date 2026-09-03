@@ -13,3 +13,7 @@
 # Legenda das classes de uso e cobertura do solo
 
 ![](legenda_mapbiomas.png)
+
+# Altitude
+
+![](/amaraji_altitude.png)
