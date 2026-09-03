@@ -36,3 +36,10 @@ alt <- amaraji |>
                            clip = "locations") |>
   terra::mask(amaraji) |>
   terra::crop(amaraji)
+
+## Visualizar ----
+
+alt
+
+ggplot() +
+  tidyterra::geom_spatraster(data = alt)
